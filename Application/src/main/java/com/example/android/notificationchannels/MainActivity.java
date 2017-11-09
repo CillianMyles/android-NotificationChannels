@@ -154,7 +154,6 @@ public class MainActivity extends Activity {
                 case R.id.main_primary_config:
                     goToNotificationSettings(NotificationHelper.PRIMARY_CHANNEL);
                     break;
-
                 case R.id.main_secondary_send1:
                     sendNotification(NOTI_SECONDARY1, getTitleSecondaryText());
                     break;
