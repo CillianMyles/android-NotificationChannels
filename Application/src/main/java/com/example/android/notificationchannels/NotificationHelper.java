@@ -40,17 +40,17 @@ class NotificationHelper extends ContextWrapper {
     public NotificationHelper(Context ctx) {
         super(ctx);
 
-        NotificationChannel chan1 = new NotificationChannel(PRIMARY_CHANNEL,
+        NotificationChannel primaryCh = new NotificationChannel(PRIMARY_CHANNEL,
                 getString(R.string.noti_channel_default), NotificationManager.IMPORTANCE_DEFAULT);
-        chan1.setLightColor(Color.GREEN);
-        chan1.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
-        getManager().createNotificationChannel(chan1);
+        primaryCh.setLightColor(Color.GREEN);
+        primaryCh.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+        getManager().createNotificationChannel(primaryCh);
 
-        NotificationChannel chan2 = new NotificationChannel(SECONDARY_CHANNEL,
+        NotificationChannel secondaryCh = new NotificationChannel(SECONDARY_CHANNEL,
                 getString(R.string.noti_channel_second), NotificationManager.IMPORTANCE_HIGH);
-        chan2.setLightColor(Color.BLUE);
-        chan2.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
-        getManager().createNotificationChannel(chan2);
+        secondaryCh.setLightColor(Color.BLUE);
+        secondaryCh.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+        getManager().createNotificationChannel(secondaryCh);
     }
 
     /**
@@ -63,7 +63,7 @@ class NotificationHelper extends ContextWrapper {
      * @param body  the body text for the notification
      * @return the builder as it keeps a reference to the notification (since API 24)
      */
-    public Notification.Builder getNotification1(String title, String body) {
+    public Notification.Builder buildPrimaryNotification(String title, String body) {
         return new Notification.Builder(getApplicationContext(), PRIMARY_CHANNEL)
                 .setContentTitle(title)
                 .setContentText(body)
@@ -78,7 +78,7 @@ class NotificationHelper extends ContextWrapper {
      * @param body  Message for notification.
      * @return A Notification.Builder configured with the selected channel and details
      */
-    public Notification.Builder getNotification2(String title, String body) {
+    public Notification.Builder buildSecondaryNotification(String title, String body) {
         return new Notification.Builder(getApplicationContext(), SECONDARY_CHANNEL)
                 .setContentTitle(title)
                 .setContentText(body)

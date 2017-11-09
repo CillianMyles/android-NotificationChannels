@@ -23,8 +23,6 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 /**
@@ -67,19 +65,19 @@ public class MainActivity extends Activity {
         Notification.Builder nb = null;
         switch (id) {
             case NOTI_PRIMARY1:
-                nb = noti.getNotification1(title, getString(R.string.primary1_body));
+                nb = noti.buildPrimaryNotification(title, getString(R.string.primary1_body));
                 break;
 
             case NOTI_PRIMARY2:
-                nb = noti.getNotification1(title, getString(R.string.primary2_body));
+                nb = noti.buildPrimaryNotification(title, getString(R.string.primary2_body));
                 break;
 
             case NOTI_SECONDARY1:
-                nb = noti.getNotification2(title, getString(R.string.secondary1_body));
+                nb = noti.buildSecondaryNotification(title, getString(R.string.secondary1_body));
                 break;
 
             case NOTI_SECONDARY2:
-                nb = noti.getNotification2(title, getString(R.string.secondary2_body));
+                nb = noti.buildSecondaryNotification(title, getString(R.string.secondary2_body));
                 break;
         }
         if (nb != null) {
@@ -110,24 +108,24 @@ public class MainActivity extends Activity {
 
     /**
      * View model for interacting with Activity UI elements. (Keeps core logic for sample
-     * seperate.)
+     * separate.)
      */
     class MainUi implements View.OnClickListener {
         final TextView titlePrimary;
         final TextView titleSecondary;
 
         private MainUi(View root) {
-            titlePrimary = (TextView) root.findViewById(R.id.main_primary_title);
-            ((Button) root.findViewById(R.id.main_primary_send1)).setOnClickListener(this);
-            ((Button) root.findViewById(R.id.main_primary_send2)).setOnClickListener(this);
-            ((ImageButton) root.findViewById(R.id.main_primary_config)).setOnClickListener(this);
+            titlePrimary = root.findViewById(R.id.main_primary_title);
+            root.findViewById(R.id.main_primary_send1).setOnClickListener(this);
+            root.findViewById(R.id.main_primary_send2).setOnClickListener(this);
+            root.findViewById(R.id.main_primary_config).setOnClickListener(this);
 
-            titleSecondary = (TextView) root.findViewById(R.id.main_secondary_title);
-            ((Button) root.findViewById(R.id.main_secondary_send1)).setOnClickListener(this);
-            ((Button) root.findViewById(R.id.main_secondary_send2)).setOnClickListener(this);
-            ((ImageButton) root.findViewById(R.id.main_secondary_config)).setOnClickListener(this);
+            titleSecondary = root.findViewById(R.id.main_secondary_title);
+            root.findViewById(R.id.main_secondary_send1).setOnClickListener(this);
+            root.findViewById(R.id.main_secondary_send2).setOnClickListener(this);
+            root.findViewById(R.id.main_secondary_config).setOnClickListener(this);
 
-            ((Button) root.findViewById(R.id.btnA)).setOnClickListener(this);
+            root.findViewById(R.id.btnA).setOnClickListener(this);
         }
 
         private String getTitlePrimaryText() {
