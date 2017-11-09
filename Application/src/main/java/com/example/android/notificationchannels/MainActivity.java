@@ -18,10 +18,7 @@ package com.example.android.notificationchannels;
 
 import android.app.Activity;
 import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
@@ -34,6 +31,7 @@ import android.widget.TextView;
  * Display main screen for sample. Displays controls for sending test notifications.
  */
 public class MainActivity extends Activity {
+
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private static final int NOTI_PRIMARY1 = 1100;
@@ -62,7 +60,7 @@ public class MainActivity extends Activity {
     /**
      * Send activity notifications.
      *
-     * @param id The ID of the notification to create
+     * @param id    The ID of the notification to create
      * @param title The title of the notification
      */
     public void sendNotification(int id, String title) {

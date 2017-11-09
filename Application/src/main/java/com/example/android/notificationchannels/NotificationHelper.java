@@ -27,6 +27,7 @@ import android.graphics.Color;
  * Helper class to manage notification channels, and create notifications.
  */
 class NotificationHelper extends ContextWrapper {
+
     private NotificationManager manager;
     public static final String PRIMARY_CHANNEL = "default";
     public static final String SECONDARY_CHANNEL = "second";
@@ -54,41 +55,41 @@ class NotificationHelper extends ContextWrapper {
 
     /**
      * Get a notification of type 1
-     *
+     * <p>
      * Provide the builder rather than the notification it's self as useful for making notification
      * changes.
      *
      * @param title the title of the notification
-     * @param body the body text for the notification
+     * @param body  the body text for the notification
      * @return the builder as it keeps a reference to the notification (since API 24)
-    */
+     */
     public Notification.Builder getNotification1(String title, String body) {
         return new Notification.Builder(getApplicationContext(), PRIMARY_CHANNEL)
-                 .setContentTitle(title)
-                 .setContentText(body)
-                 .setSmallIcon(getSmallIcon())
-                 .setAutoCancel(true);
+                .setContentTitle(title)
+                .setContentText(body)
+                .setSmallIcon(getSmallIcon())
+                .setAutoCancel(true);
     }
 
     /**
      * Build notification for secondary channel.
      *
      * @param title Title for notification.
-     * @param body Message for notification.
+     * @param body  Message for notification.
      * @return A Notification.Builder configured with the selected channel and details
      */
     public Notification.Builder getNotification2(String title, String body) {
         return new Notification.Builder(getApplicationContext(), SECONDARY_CHANNEL)
-                 .setContentTitle(title)
-                 .setContentText(body)
-                 .setSmallIcon(getSmallIcon())
-                 .setAutoCancel(true);
+                .setContentTitle(title)
+                .setContentText(body)
+                .setSmallIcon(getSmallIcon())
+                .setAutoCancel(true);
     }
 
     /**
      * Send a notification.
      *
-     * @param id The ID of the notification
+     * @param id           The ID of the notification
      * @param notification The notification object
      */
     public void notify(int id, Notification.Builder notification) {
@@ -106,7 +107,7 @@ class NotificationHelper extends ContextWrapper {
 
     /**
      * Get the notification manager.
-     *
+     * <p>
      * Utility method as this helper works with it a lot.
      *
      * @return The system service NotificationManager
